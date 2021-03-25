@@ -3,12 +3,26 @@ package com.springboot.chapter3.pojo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Condition;
+import org.springframework.context.annotation.ConditionContext;
+import org.springframework.core.env.Environment;
+import org.springframework.core.type.AnnotatedTypeMetadata;
 import org.springframework.stereotype.Component;
 
+
 @Component
-public class DataBaseProperties {
+public class DataBaseProperties implements Condition {
 
     private static final Logger logger = LoggerFactory.getLogger(DataBaseProperties.class);
+
+    @Override
+    public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+        Environment env = conditionContext.getEnvironment();
+        return env.containsProperty("database.driverName")
+                && env.containsProperty("database.url")
+                && env.containsProperty("database.userName")
+                && env.containsProperty("database.password");
+    }
 
     @Value("${database.driverName}")
     private String driverName = null;
