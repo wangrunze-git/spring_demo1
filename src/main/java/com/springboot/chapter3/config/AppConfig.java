@@ -3,6 +3,7 @@ package com.springboot.chapter3.config;
 import com.springboot.chapter3.pojo.Apple;
 import com.springboot.chapter3.pojo.DataBaseProperties;
 import com.springboot.chapter3.pojo.User;
+import com.springboot.chapter4.aspect.MyAspect;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbcp2.BasicDataSourceFactory;
 import org.springframework.context.annotation.*;
@@ -65,5 +66,6 @@ public class AppConfig {
         apple.setName("苹果");
         return apple;
     }
+
 
 }
