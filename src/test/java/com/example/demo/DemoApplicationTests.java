@@ -1,8 +1,5 @@
 package com.example.demo;
 
-import com.springboot.chapter3.config.AppConfig;
-import com.springboot.chapter3.config.IoCTest;
-import com.springboot.chapter3.pojo.User;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

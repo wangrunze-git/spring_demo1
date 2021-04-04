@@ -4,8 +4,13 @@ import com.springboot.chapter3.pojo.Apple;
 import com.springboot.chapter3.pojo.DataBaseProperties;
 import com.springboot.chapter3.pojo.User;
 import com.springboot.chapter4.aspect.MyAspect;
+import com.springboot.chapter5.dao.MyBatisUserDao;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbcp2.BasicDataSourceFactory;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.mapper.MapperFactoryBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Service;
 
@@ -14,8 +19,8 @@ import java.util.Properties;
 
 
 @Configuration
-@ComponentScan(basePackages = {"com.springboot.chapter3.*"},
-        excludeFilters = {@ComponentScan.Filter(classes = {Service.class})})
+/*@ComponentScan(basePackages = {"com.springboot.chapter5"},
+        excludeFilters = {@ComponentScan.Filter(classes = {Service.class})})*/
 @PropertySource(value = {"classpath:jdbc.properties", "classpath:application.properties",
         "classpath:application-test.properties", "classpath:application-dev.properties"},
         ignoreResourceNotFound = true)
@@ -66,6 +71,9 @@ public class AppConfig {
         apple.setName("苹果");
         return apple;
     }
+
+
+
 
 
 }
