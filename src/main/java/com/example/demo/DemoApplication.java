@@ -17,13 +17,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.PlatformTransactionManager;
 
+import javax.annotation.PostConstruct;
 import java.util.logging.Logger;
 
 //指定扫描的包
 //@SpringBootApplication(scanBasePackages = {"com.springboot.chapter4.aspect"})
 @SpringBootApplication()
-@ComponentScan(basePackages = {"com.springboot.chapter5"})
+@ComponentScan(basePackages = {"com.springboot.chapter6"})
 //定义JPA接口扫描包路径
 //@EnableJpaRepositories(basePackages = "com.springboot.chapter5.dao")
 //定义实体Bean扫描包路径
@@ -32,7 +34,7 @@ import java.util.logging.Logger;
 //定义MyBatis的扫描
 @MapperScan(
         //指定扫描包
-        basePackages = "com.springboot.chapter5.*",
+        basePackages = "com.springboot.chapter6.*",
         //指定sqlSessionFactory，如果sqlSessionTemplate被指定，则作废
         //如果你的项目中不存在多个SqlSessionFactory或者SqlSessionTemplate，那么你可以完全不用配置sqlSessionFactoryRef或者sqlSessionTemplateRef
         sqlSessionFactoryRef = "sqlSessionFactory",
@@ -43,6 +45,22 @@ import java.util.logging.Logger;
 //        annotationClass = Mapper.class
 )
 public class DemoApplication {
+
+    //启动切面
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+
+    //注入事务管理器，它由Spring Boot自动生成
+    @Autowired
+    PlatformTransactionManager transactionManager = null;
+
+    //使用后初始化方法，观察自动生成的事务管理器
+    @PostConstruct
+    public void viewTransactionManager(){
+        //启动前加入断点观测
+        System.out.println(transactionManager.getClass().getName());
+    }
 
     /*//定义切面
     @Bean(name = "myAspect")
@@ -95,10 +113,7 @@ public class DemoApplication {
         return mapperScannerConfigurer;
     }*/
 
-    //启动切面
-    public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
-    }
+
 
 
 
