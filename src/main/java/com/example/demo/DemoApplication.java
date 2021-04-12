@@ -24,8 +24,8 @@ import java.util.logging.Logger;
 
 //指定扫描的包
 //@SpringBootApplication(scanBasePackages = {"com.springboot.chapter4.aspect"})
-@SpringBootApplication()
-@ComponentScan(basePackages = {"com.springboot.chapter6"})
+//@SpringBootApplication()
+//@ComponentScan(basePackages = {"com.springboot.chapter6"})
 //定义JPA接口扫描包路径
 //@EnableJpaRepositories(basePackages = "com.springboot.chapter5.dao")
 //定义实体Bean扫描包路径

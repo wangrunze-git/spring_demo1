@@ -18,7 +18,7 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 
-@Configuration
+//@Configuration
 /*@ComponentScan(basePackages = {"com.springboot.chapter5"},
         excludeFilters = {@ComponentScan.Filter(classes = {Service.class})})*/
 @PropertySource(value = {"classpath:jdbc.properties", "classpath:application.properties",
